@@ -4,7 +4,7 @@ bottom_thickness = 3;
 middle_thickness = 5;
 switch_thickness = 5;
 
-use_screw_tenting = false;
+is_36 = true;
 
 module sector(radius, angles, fn = 24) {
     r = radius / cos(180 / fn);
@@ -65,6 +65,14 @@ module alpha_holes() {
                     square(size=[14, 14], center=true);
                 }
             }
+        }
+    }
+}
+
+module lone_hole() {
+    translate([79.57, -90.06]) {
+        rotate([0, 0, 63.4]) {
+            square(size=[14, 14], center=true);
         }
     }
 }
@@ -214,6 +222,9 @@ module switch_plate() {
             rotate([0, 0, -26.6]) {
                 thumb_imported_from_file();
             }
+        }
+        if (is_36) {
+            lone_hole();
         }
         polygon(
             points= [
