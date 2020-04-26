@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name squiggle)(type Legacy)(uri ${KIPRJMOD}/../libs/symbols/squiggle.lib)(options "")(descr ""))
+)

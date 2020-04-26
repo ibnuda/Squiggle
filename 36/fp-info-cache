@@ -1,4 +1,4 @@
-17464119893112
+19052007264112
 footprints
 1u-dual
 
@@ -41,6 +41,13 @@ choc-2
 0
 3
 2
+footprints
+connector-shrouded
+
+
+0
+10
+10
 footprints
 diode
 
