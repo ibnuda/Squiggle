@@ -1,4 +1,4 @@
-14288815185112
+19052007264112
 footprints
 1u-dual
 
@@ -8,6 +8,20 @@ footprints
 2
 footprints
 2u-dual
+
+
+0
+4
+2
+footprints
+15u-dual
+
+
+0
+4
+2
+footprints
+125u-dual
 
 
 0
@@ -27,6 +41,13 @@ choc-2
 0
 3
 2
+footprints
+connector-shrouded
+
+
+0
+10
+10
 footprints
 diode
 
