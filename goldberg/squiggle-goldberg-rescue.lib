@@ -1,0 +1,19 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# diode-squiggle
+#
+DEF diode-squiggle diode 0 40 Y Y 1 F N
+F0 "diode" -150 -50 60 V V C CNN
+F1 "diode-squiggle" 150 -50 60 V I C CNN
+F2 "" 0 0 60 H V C CNN
+F3 "" 0 0 60 H V C CNN
+DRAW
+P 2 0 1 0 -100 0 100 0 N
+P 4 0 1 0 0 0 -100 -100 100 -100 0 0 F
+X ~ 1 0 50 50 D 60 60 1 1 P
+X ~ 2 0 -150 50 U 60 60 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library

@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name squiggle)(type Legacy)(uri ${KIPRJMOD}/../libs/symbols/squiggle.lib)(options "")(descr ""))
+  (lib (name squiggle-goldberg-rescue)(type Legacy)(uri ${KIPRJMOD}/squiggle-goldberg-rescue.lib)(options "")(descr ""))
+)
