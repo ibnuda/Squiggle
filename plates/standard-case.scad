@@ -1,10 +1,12 @@
 $fn = 16;
 
 bottom_thickness = 3;
-middle_thickness = 5;
-switch_thickness = 5;
+middle_thickness = 6;
+switch_thickness = 3;
 
-is_36 = true;
+is_36 = false;
+
+is_case = true;
 
 module sector(radius, angles, fn = 24) {
     r = radius / cos(180 / fn);
@@ -260,10 +262,12 @@ module middle_plate() {
     }
 }
 
-//translate([140, 0, 3]) color([0.2, 0.2, 0.2]) bottom_plate();
-//translate([0, 140, 3]) color([0.2, 0.2, 0.2]) middle_plate();
-//translate([0, 0, 6]) color([0.2, 0.2, 0.9]) switch_plate();
-
-translate([140, 0, 0]) color([0.4, 0.3, 0.2]) linear_extrude(height = 3) bottom_plate();
-translate([0, 0, 3])   color([0.2, 0.3, 0.2]) linear_extrude(height = 6) middle_plate();
-translate([0, 0, 0])   color([0.2, 0.3, 0.9]) linear_extrude(height = 3) switch_plate();
+if (is_case) {
+    translate([140, 0, 0]) color([0.4, 0.3, 0.2]) linear_extrude(height = bottom_thickness) bottom_plate();
+    translate([0, 0, 3])   color([0.2, 0.3, 0.2]) linear_extrude(height = middle_thickness) middle_plate();
+     translate([0, 0, 0])   color([0.2, 0.3, 0.9]) linear_extrude(height = switch_thickness) switch_plate();
+} else {
+    translate([140, 0, 3]) color([0.2, 0.2, 0.2]) bottom_plate();
+    translate([0, 140, 3]) color([0.2, 0.2, 0.2]) middle_plate();
+    translate([0, 0, 6]) color([0.2, 0.2, 0.9]) switch_plate();
+}
