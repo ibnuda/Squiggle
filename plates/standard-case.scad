@@ -50,13 +50,19 @@ module screw_holes() {
     }
 }
 
-tenting_positions = [[129, -118.3], [40, -11], [106.5, -11.5], [15, -58]];
+tenting_positions = [
+    [129, -118.3],
+    [40, -11],
+    [106.5, -11.5],
+    [15, -58]
+];
+
 module tenting_wing() {
-    circle(r=6);
+    circle(r=6.4);
 }
 
 module tenting_hole() {
-    circle(r=3.1);
+    circle(r=3.2);
 }
 
 module alpha_holes() {
@@ -118,26 +124,6 @@ module thumb_hole() {
             [-8.5,    5],
             [-7,      5],
             [-7,      7],
-        ]
-    );
-    
-}
-
-module plain_thumb_hole() {
-    polygon(
-        points=[
-            [-17,   11],
-            [-7,    11],
-            [-7,     7],
-            [7,      7],
-            [7,     11],
-            [17,    11],
-            [17,   -8.7],
-            [8.5,  -8.7],
-            [8.5,  -7],
-            [-8.5, -7],
-            [-8.5, -8.7],
-            [-17,  -8.7],
         ]
     );
     
@@ -265,7 +251,7 @@ module middle_plate() {
 if (is_case) {
     translate([140, 0, 0]) color([0.4, 0.3, 0.2]) linear_extrude(height = bottom_thickness) bottom_plate();
     translate([0, 0, 3])   color([0.2, 0.3, 0.2]) linear_extrude(height = middle_thickness) middle_plate();
-     translate([0, 0, 0])   color([0.2, 0.3, 0.9]) linear_extrude(height = switch_thickness) switch_plate();
+    translate([0, 0, 0])   color([0.2, 0.3, 0.9]) linear_extrude(height = switch_thickness) switch_plate();
 } else {
     translate([140, 0, 3]) color([0.2, 0.2, 0.2]) bottom_plate();
     translate([0, 140, 3]) color([0.2, 0.2, 0.2]) middle_plate();
