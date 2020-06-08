@@ -1,6 +1,28 @@
-# Squiggle Keyboard Family
+# Squiggle Keyboard
 
-It's a family keyboard which based on my own circumstances and observed usages.
+It's a keyboard family which based on my circumstances, preferences, and
+observed usages.
+
+Requirements:
+
+- 5 columns per hand.
+  My right pinky is almost useless.
+- At most 3 keys for each side's thumb row.
+  My right thumb key is almost useless.
+- No numrow.
+  It's harder and more cumbersome to use than a numpad on a layer.
+- Split.
+  Typing on single flat keyboard hurts my arms in a lot of use cases.
+- Symmetric.
+  Personal preferences.
+
+This family keyboard repo will not have any of the following features:
+
+- OLED Screen: useless.
+- LEDs: useless for me and hurt my eyes.
+- Rotary Encoder: useless for me.
+- Hotswap: I need a commitment.
+- Case for `Low Profile`: defeating the whole purpose of ***LOW*** profile.
 
 ## Screenshot
 
@@ -16,7 +38,8 @@ It's a family keyboard which based on my own circumstances and observed usages.
 
 ### Low Profile
 
-- Dongguan Kaihua Electronics Co., Ltd (originally named Longhua Electronics)'s Choc style switches.
+- Dongguan Kaihua Electronics Co., Ltd (originally named Longhua Electronics)'s
+  Choc style switches.
 - 34 Keys.
 - 4x2u thumb keys.
 - 2 Promicros.
@@ -60,6 +83,12 @@ It's a family keyboard which based on my own circumstances and observed usages.
 
 I haven't printed some of it. But, theoretically, they should just work.
 Oh, if things go wrong, I won't take any responisibilities.
+
+## Additional Note
+
+Any files with `mokou_*.kicad_mod` in `libs/footprints` are made by [Jokan Hiyou](https://twitter.com/jokanhiyou)
+and belong to hers.
+I just dither them and made them kicad footprints.
 
 ## License
 
