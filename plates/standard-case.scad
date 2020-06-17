@@ -9,6 +9,8 @@ is_36 = false;
 
 is_case = true;
 
+is_goldberg = false;
+
 is_high = true;
 
 module sector(radius, angles, fn = 24)
@@ -61,7 +63,7 @@ screw_holes()
 }
 
 tenting_positions =
-    [ [ 129, -118.3 ], [ 40, -11 ], [ 106.5, -11.5 ], [ 15, -58 ] ];
+    [ [ 129, -118.3 ], [ 40, -10 ], [ 106.5, -11.5 ], [ 13, -58 ] ];
 
 module
 tenting_wing()
@@ -162,13 +164,13 @@ inner_room()
 module
 bottom_plate()
 {
-    angles = [ 63.7, 125.6 ];
-    anglea = [ 15, 112 ];
+    angle_upper = [ 63.7, 125.6 ];
+    angle_lower = [ 15, 122 ];
     difference()
     {
         union()
         {
-            translate([ 73, -108 ]) sector(105, angles, 72);
+            translate([ 73, -108 ]) sector(105, angle_upper, 72);
             polygon(points = [
                 [ 12, -22.8 ],
                 [ 12, -89 ],
@@ -181,7 +183,7 @@ bottom_plate()
                 translate(tenting_positions[i]) tenting_wing();
             }
         }
-        translate([ 36, -133 ]) sector(41.5, anglea, 75);
+        translate([ 36, -133 ]) sector(41.5, angle_lower, 75);
         // screw_holes();
         for (i = [0:3]) {
             translate(tenting_positions[i]) tenting_hole();
@@ -199,7 +201,15 @@ thumb_imported_from_file()
 }
 
 module
-upper_plate(hole_width, is_switch_plate = false)
+thumb_two_u()
+{
+    union()
+    {
+        translate([ 0, 9.5, 0 ]) { square(size = [ 14, 14 ], center = true); }
+        translate([ 0, -9.5, 0 ]) { square(size = [ 14, 14 ], center = true); }
+    }
+}
+module upper_plate(hole_width, is_switch_plate = false)
 {
     difference()
     {
@@ -209,9 +219,13 @@ upper_plate(hole_width, is_switch_plate = false)
             rotate([ 0, 0, 153.4 ])
             {
                 if (is_switch_plate) {
-                    thumb_imported_from_file();
+                    if (is_goldberg) {
+                        thumb_two_u();
+                    } else {
+                        thumb_imported_from_file();
+                    }
                 } else {
-                    square(size = [ 19.5, 38 ], center = true);
+                    square(size = [ hole_width, hole_width * 2 ], center = true);
                 };
             }
         }
@@ -220,9 +234,13 @@ upper_plate(hole_width, is_switch_plate = false)
             rotate([ 0, 0, -26.6 ])
             {
                 if (is_switch_plate) {
-                    thumb_imported_from_file();
+                    if (is_goldberg) {
+                        thumb_two_u();
+                    } else {
+                        thumb_imported_from_file();
+                    }
                 } else {
-                    square(size = [ 19.5, 38 ], center = true);
+                    square(size = [ hole_width, hole_width * 2 ], center = true);
                 };
             }
         }
@@ -258,7 +276,7 @@ if (is_case) {
     }
     translate([ 0, 0, 0 ]) color([ 0.2, 0.3, 0.9 ])
     {
-        linear_extrude(height = switch_thickness) { upper_plate(14, true); }
+        // linear_extrude(height = switch_thickness) { upper_plate(14, true); }
     }
     if (is_high) {
         difference()
