@@ -1,9 +1,9 @@
-$fn = 16;
+$fn = 60;
 
 bottom_thickness = 3;
-middle_thickness = 6;
+middle_thickness = 7;
 switch_thickness = 3;
-top_thickness = 9;
+top_thickness = 11;
 
 is_36 = false;
 
@@ -13,7 +13,7 @@ is_goldberg = false;
 
 is_high = true;
 
-module sector(radius, angles, fn = 24)
+module sector(radius, angles, fn = 60)
 {
     r = radius / cos(180 / fn);
     step = -360 / fn;
@@ -30,7 +30,7 @@ module sector(radius, angles, fn = 24)
     }
 }
 
-module arc(radius, angles, width = 1, fn = 24)
+module arc(radius, angles, width = 1, fn = 60)
 {
     difference()
     {
@@ -63,7 +63,7 @@ screw_holes()
 }
 
 tenting_positions =
-    [ [ 129, -118.3 ], [ 40, -10 ], [ 106.5, -11.5 ], [ 13, -58 ] ];
+    [ [ 129, -118.3 ], [ 40, -10 ], [ 106.5, -11.5 ], [ 13, -58 ], [ 145, -35 ] ];
 
 module
 tenting_wing()
@@ -91,10 +91,10 @@ promicro_trrs_space()
         ]);
         // trrs jack space.
         polygon(points = [
-            [ 148, -74 ],
-            [ 148, -60 ],
-            [ 122, -60 ],
-            [ 122, -74 ],
+            [ 148, -75 ],
+            [ 148, -59 ],
+            [ 122, -59 ],
+            [ 122, -75 ],
         ]);
     }
 }
@@ -179,13 +179,13 @@ bottom_plate()
                 [ 146, -14 ],
                 [ 116, -14 ],
             ]);
-            for (i = [0:3]) {
+            for (i = [0:len(tenting_positions) - 1]) {
                 translate(tenting_positions[i]) tenting_wing();
             }
         }
         translate([ 36, -133 ]) sector(41.5, angle_lower, 75);
         // screw_holes();
-        for (i = [0:3]) {
+        for (i = [0:len(tenting_positions) - 1]) {
             translate(tenting_positions[i]) tenting_hole();
         }
     }
@@ -225,7 +225,8 @@ module upper_plate(hole_width, is_switch_plate = false)
                         thumb_imported_from_file();
                     }
                 } else {
-                    square(size = [ hole_width, hole_width * 2 ], center = true);
+                    square(size = [ hole_width, hole_width * 2 ],
+                           center = true);
                 };
             }
         }
@@ -240,7 +241,8 @@ module upper_plate(hole_width, is_switch_plate = false)
                         thumb_imported_from_file();
                     }
                 } else {
-                    square(size = [ hole_width, hole_width * 2 ], center = true);
+                    square(size = [ hole_width, hole_width * 2 ],
+                           center = true);
                 };
             }
         }
@@ -266,29 +268,29 @@ middle_plate()
 }
 
 if (is_case) {
-    translate([ 140, 0, 0 ]) color([ 0.4, 0.3, 0.2 ])
+    translate([ 150, 0, 0 ]) color([ 0.4, 0.3, 0.2 ])
     {
         linear_extrude(height = bottom_thickness) { bottom_plate(); }
     }
-    translate([ 140, 0, bottom_thickness ]) color([ 0.2, 0.3, 0.2 ])
+    translate([ 150, 0, bottom_thickness ]) color([ 0.2, 0.3, 0.2 ])
     {
         linear_extrude(height = middle_thickness) { middle_plate(); }
     }
-    translate([ 0, 0, 0 ]) color([ 0.2, 0.3, 0.9 ])
+    translate([ 0, 0, 0 ]) color([ 0.3, 0.3, 0.3 ])
     {
-        // linear_extrude(height = switch_thickness) { upper_plate(14, true); }
+        linear_extrude(height = switch_thickness) { upper_plate(14, true); }
     }
     if (is_high) {
         difference()
         {
-            translate([ 0, 0, switch_thickness ]) color([ 0.8, 0.8, 0.8 ])
+            translate([ 0, 0, switch_thickness ]) color([ 0.5, 0.5, 0.5 ])
             {
                 linear_extrude(height = top_thickness)
                 {
                     upper_plate(19.5, false);
                 }
             }
-            translate([ 0, 0, switch_thickness ]) linear_extrude(height = 2)
+            translate([ 0, 0, switch_thickness ]) linear_extrude(height = 3)
             {
                 promicro_trrs_space();
             }
