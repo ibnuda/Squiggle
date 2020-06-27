@@ -67,8 +67,8 @@ promicro_trrs_space()
     {
         // promicro space.
         polygon(points = [
-            [ 116, -8 ],
-            [ 136, -8 ],
+            [ 116, -5 ],
+            [ 136, -5 ],
             [ 136, -56 ],
             [ 116, -56 ],
         ]);

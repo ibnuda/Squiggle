@@ -1,7 +1,23 @@
 include <common.scad>
 
 module
-something()
+almost_flat_sphere()
+{
+    resize([ 15, 15, 5 ]) translate([ 0, 0, -75 ]) sphere(r = 75);
+}
+
+module
+tenting_cylinder()
+{
+    hull()
+    {
+        translate([ 0, 0, 25 ]) almost_flat_sphere();
+        translate([ 0, 0, 5 ]) almost_flat_sphere();
+    }
+}
+
+module
+base_case()
 {
     difference()
     {
@@ -13,8 +29,7 @@ something()
                 linear_extrude(height = 0.1) shape_of_pcb();
             }
             for (i = [0:len(tenting_screw_positions) - 1]) {
-                linear_extrude(height = 24)
-                    translate(tenting_screw_positions[i]) tenting_wing();
+                translate(tenting_screw_positions[i]) tenting_cylinder();
             }
         }
 
@@ -32,7 +47,7 @@ lower_part()
     {
         intersection()
         {
-            something();
+            base_case();
             translate([ 150, -150, 5 ])
                 cube(size = [ 400, 400, 10 ], center = true);
         }
@@ -46,7 +61,7 @@ upper_part()
 {
     difference()
     {
-        something();
+        base_case();
         translate([ 150, -150, 0 ])
             cube(size = [ 400, 400, 20 ], center = true);
         translate([ 0, 0, 9 ]) linear_extrude(height = 5) alpha_holes(14);
@@ -65,6 +80,7 @@ upper_part()
 }
 
 lower_part();
-translate([160, 0, -10]) {
+translate([ 160, 0, -10 ])
+{
     upper_part();
 }
