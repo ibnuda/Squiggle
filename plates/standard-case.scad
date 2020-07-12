@@ -11,7 +11,7 @@ is_case = true;
 
 is_goldberg = false;
 
-is_high = true;
+is_high = false;
 
 module sector(radius, angles, fn = 60)
 {

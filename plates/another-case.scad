@@ -60,8 +60,8 @@ module upper_plate(hole_width, is_switch_plate = true)
     {
         bottom_plate();
         alpha_holes(hole_width);
-        thumb_hole(96.6, -98.7, 153.4, is_switch_plate, hole_width);
-        thumb_hole(113.7, -107.3, -26.6, is_switch_plate, hole_width);
+        thumb_hole(96.6, -98.7, 153.4, is_switch_plate, hole_width, is_goldberg);
+        thumb_hole(113.7, -107.3, -26.6, is_switch_plate, hole_width, is_goldberg);
         if (is_switch_plate)
         {
             promicro_trrs_space();

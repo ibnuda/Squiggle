@@ -74,8 +74,8 @@ promicro_trrs_space()
         ]);
         // trrs jack space.
         polygon(points = [
-            [ 150, -75 ],
-            [ 150, -59 ],
+            [ 155, -75 ],
+            [ 155, -59 ],
             [ 122, -59 ],
             [ 122, -75 ],
         ]);
