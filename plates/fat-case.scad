@@ -1,11 +1,21 @@
 include <common.scad>
 
-is_goldberg = true;
+is_goldberg = false;
+
+bottom_plate_thickness = 5;
+pcb_space_thickness = is_goldberg ? 4 : 6;
+bottom_pcb_thickness = bottom_plate_thickness + pcb_space_thickness;
+switch_plate_thickness = is_goldberg ? 5 : 3;
+bottom_pcb_switch_thickness = bottom_pcb_thickness + switch_plate_thickness;
+
+promicro_trrs_height = 12;
+
+movement = is_goldberg ? 3 : 5;
 
 module
 almost_flat_sphere()
 {
-    resize([ 15, 15, 5 ]) translate([ 0, 0, -75 ]) sphere(r = 75);
+    resize([ 15, 15, 4.5 ]) translate([ 0, 0, -75 ]) sphere(r = 75);
 }
 
 module
@@ -47,83 +57,33 @@ module case ()
     difference()
     {
         base_case();
-        translate([ 0, 0, 5 ]) linear_extrude(height = 4) shape_of_pcb();
-        translate([ 0, 0, 5 ]) linear_extrude(height = 12) promicro_trrs_space();
-        translate([ 0, 0, 9 ]) linear_extrude(height = 5) alpha_holes(14);
-        translate([ 0, 0, 9 ]) linear_extrude(height = 5)
-            thumb_hole(96.6, -98.7, 153.4, true, 14, is_goldberg);
-        translate([ 0, 0, 9 ]) linear_extrude(height = 5)
-            thumb_hole(113.7, -107.3, -26.6, true, 14, is_goldberg);
-        translate([ 0, 0, 14 ]) linear_extrude(height = 23) alpha_holes(19.5);
-        translate([ 0, 0, 14 ]) linear_extrude(height = 23)
-            thumb_hole(96.6, -98.7, 153.4, false, 19.5, is_goldberg);
-        translate([ 0, 0, 14 ]) linear_extrude(height = 23)
-            thumb_hole(113.7, -107.3, -26.6, false, 19.5, is_goldberg);
+        translate([ 0, 0, bottom_plate_thickness ]) linear_extrude(height = pcb_space_thickness) shape_of_pcb();
+        translate([ 0, 0, bottom_plate_thickness ]) linear_extrude(height = promicro_trrs_height) promicro_trrs_space();
+        translate([ 0, 0, bottom_pcb_thickness ]) linear_extrude(height = 5) alpha_holes(14);
+        translate([ 0, 0, bottom_pcb_thickness ]) linear_extrude(height = 5) thumb_hole(96.6, -98.7, 153.4, true, 14, is_goldberg);
+        translate([ 0, 0, bottom_pcb_thickness ]) linear_extrude(height = 5) thumb_hole(113.7, -107.3, -26.6, true, 14, is_goldberg);
+        translate([ 0, 0, bottom_pcb_switch_thickness ]) linear_extrude(height = 23) alpha_holes(19.5);
+        translate([ 0, 0, bottom_pcb_switch_thickness ]) linear_extrude(height = 23) thumb_hole(96.6, -98.7, 153.4, false, 19.5, is_goldberg);
+        translate([ 0, 0, bottom_pcb_switch_thickness ]) linear_extrude(height = 23) thumb_hole(113.7, -107.3, -26.6, false, 19.5, is_goldberg);
     }
 }
 
-module
-lower_part()
-{
-    difference()
-    {
-        intersection()
-        {
-            base_case();
-            translate([ 150, -150, 5 ])
-                cube(size = [ 400, 400, 10 ], center = true);
-        }
-        translate([ 0, 0, 5 ]) linear_extrude(height = 8) shape_of_pcb();
-        translate([ 0, 0, 5 ]) linear_extrude(height = 8) promicro_trrs_space();
-    }
-}
-
-module
-upper_part()
-{
-    difference()
-    {
-        base_case();
-        translate([ 150, -150, 0 ])
-            cube(size = [ 400, 400, 20 ], center = true);
-        // switch holes.
-        translate([ 0, 0, 9 ]) linear_extrude(height = 14) alpha_holes(14);
-        translate([ 0, 0, 9 ]) linear_extrude(height = 14)
-            thumb_hole(96.6, -98.7, 153.4, true, 14, is_goldberg);
-        translate([ 0, 0, 9 ]) linear_extrude(height = 14)
-            thumb_hole(113.7, -107.3, -26.6, true, 14, is_goldberg);
-
-        // spaces.
-        translate([ 0, 0, 9 ]) linear_extrude(height = 6) promicro_trrs_space();
-
-        // cap holes.
-        translate([ 0, 0, 13 ]) linear_extrude(height = 23) alpha_holes(19.5);
-        translate([ 0, 0, 13 ]) linear_extrude(height = 23)
-            thumb_hole(96.6, -98.7, 153.4, false, 19.5, is_goldberg);
-        translate([ 0, 0, 13 ]) linear_extrude(height = 23)
-            thumb_hole(113.7, -107.3, -26.6, false, 19.5, is_goldberg);
-    }
-}
-
-// lower_part();
-// translate([ 160, 0, -10 ])
-// translate([ 0, 0, 0.25 ])
-//    upper_part();
-
+// bottom case.
 intersection()
 {
     case();
-    translate([150, -150, 4]) {
-        cube(size = [400, 400, 10 ], center = true);
+    translate([150, -150, movement]) {
+        cube(size = [400, 400, 12 ], center = true);
     }
 }
 
-translate([200, 0, -9]) {
-    intersection()
+// top case.
+translate([160, 0, -bottom_pcb_thickness]) {
+    difference()
     {
-        case();
-        translate([150, -150, 17]) {
-            cube(size=[400, 400, 16], center=true);
+        color("navy")case();
+        translate([150, -150, movement]) {
+            cube(size = [400, 400, 12 ], center = true);
         }
     }
 }
