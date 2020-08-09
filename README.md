@@ -79,6 +79,32 @@ This family keyboard repo will not have any of the following features:
 
 ![goldberg](screenshots/squiggle-goldberg.png)
 
+## Confirmed Working PCBs
+
+### Standard
+
+![standard](screenshots/squiggle-standard.jpg)
+
+Example firmware: [QMK's master branch](https://github.com/qmk/qmk_firmware/tree/master/keyboards/squiggle/keymaps/rick)
+
+### Goldberg
+
+![goldberg](screenshots/squiggle-goldberg.jpg)
+
+Example firmware: [QMK's master branch](https://github.com/qmk/qmk_firmware/tree/master/keyboards/squiggle/keymaps/rick-complicated)
+
+### Low Profile
+
+![choc](screenshots/squiggle-choc.jpg)
+
+Example firmware: [QMK's master branch](https://github.com/qmk/qmk_firmware/tree/master/keyboards/squiggle/keymaps/rick)
+
+### Minimalist
+
+![minimalist](screenshots/squiggle-minimalist.jpg)
+
+Example firmware: [Ibnuda's fork](https://github.com/ibnuda/qmk_firmware/tree/squiggle-minimalist/keyboards/squiggle_minimalist/keymaps/rick)
+
 ## Disclaimer
 
 I haven't printed some of it. But, theoretically, they should just work.
