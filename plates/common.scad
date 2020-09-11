@@ -1,6 +1,6 @@
 
 tenting_screw_positions =
-    [ [ 129, -118.3 ], [ 40, -10 ], [ 106.5, -10 ], [ 13, -58 ], [ 144, -35 ] ];
+    [ [ 129, -118.3 ], [ 40, -10 ], [ 106.5, -10 ], [ 13, -58 ]/*, [ 144, -35 ]*/ ];
 
 tightening_screw_positions = [
     [ 17.5, -26, 0 ],
@@ -58,6 +58,17 @@ module
 tightening_hole()
 {
     circle(r = 1.2);
+}
+
+module
+white_space()
+{
+    polygon(points=[
+        [ 116, -5 ],
+        [ 116, -77.5 ],
+        [ 150, -94.5 ],
+        [ 150, -10 ]
+    ]);
 }
 
 module

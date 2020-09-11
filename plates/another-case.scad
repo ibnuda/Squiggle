@@ -5,17 +5,17 @@ $fn = 60;
 bottom_thickness = 3;
 middle_thickness = 7;
 switch_thickness = 3;
-top_thickness = 11;
+top_thickness = 7;
 
 use_tenting_screws = true;
 
 is_36 = false;
 
-is_case = true;
+is_case = false;
 
 is_goldberg = false;
 
-is_high = true;
+is_high = false;
 
 module
 bottom_plate()
@@ -64,7 +64,8 @@ module upper_plate(hole_width, is_switch_plate = true)
         thumb_hole(113.7, -107.3, -26.6, is_switch_plate, hole_width, is_goldberg);
         if (is_switch_plate)
         {
-            promicro_trrs_space();
+            // promicro_trrs_space();
+            white_space();
         }
         if (is_36)
         {
@@ -76,11 +77,11 @@ module upper_plate(hole_width, is_switch_plate = true)
 if (is_case) {
     translate([ 150, 0, 0 ]) color([ 0.4, 0.3, 0.2 ])
     {
-        linear_extrude(height = bottom_thickness) { bottom_plate(); }
+        // linear_extrude(height = bottom_thickness) { bottom_plate(); }
     }
     translate([ 150, 0, bottom_thickness ]) color([ 0.2, 0.3, 0.2 ])
     {
-        linear_extrude(height = middle_thickness) { middle_plate(); }
+        // linear_extrude(height = middle_thickness) { middle_plate(); }
     }
     translate([ 0, 0, 0 ]) color([ 0.3, 0.3, 0.3 ])
     {
@@ -103,7 +104,7 @@ if (is_case) {
         }
     }
 } else {
-    translate([ 140, 0, 3 ]) color([ 0.2, 0.2, 0.2 ]) bottom_plate();
-    translate([ 0, 140, 3 ]) color([ 0.2, 0.2, 0.2 ]) middle_plate();
+    // translate([ 150, 0, 3 ]) color([ 0.2, 0.2, 0.2 ]) bottom_plate();
+    // translate([ 0, 140, 3 ]) color([ 0.2, 0.2, 0.2 ]) middle_plate();
     translate([ 0, 0, 6 ]) color([ 0.2, 0.2, 0.9 ]) upper_plate(14, true);
 }

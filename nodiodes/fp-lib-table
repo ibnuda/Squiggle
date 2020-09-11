@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name nodiodes)(type KiCad)(uri ${KIPRJMOD}/../libs/footprints)(options "")(descr ""))
+)

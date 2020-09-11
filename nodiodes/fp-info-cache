@@ -1,4 +1,4 @@
-77908465477302
+77930453242043
 Connector_RJ
 RJ12_Amphenol_54601
 RJ12 connector  https://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/c-bmj-0082.pdf
@@ -167,175 +167,175 @@ lan magnetics transformer
 0
 14
 13
-footprints
+nodiodes
 1u-dual
 
 
 0
 4
 2
-footprints
+nodiodes
 2u-dual
 
 
 0
 4
 2
-footprints
+nodiodes
 15u-dual
 
 
 0
 4
 2
-footprints
+nodiodes
 125u-dual
 
 
 0
 4
 2
-footprints
+nodiodes
 baldy_luv_u
 
 
 0
 0
 0
-footprints
+nodiodes
 baldy_peace
 
 
 0
 0
 0
-footprints
+nodiodes
 baldy_small
 
 
 0
 0
 0
-footprints
+nodiodes
 baldy_thats_stupid
 
 
 0
 0
 0
-footprints
+nodiodes
 baldy_uh_huh
 
 
 0
 0
 0
-footprints
+nodiodes
 choc-1
 
 
 0
 3
 2
-footprints
+nodiodes
 choc-2
 
 
 0
 3
 2
-footprints
+nodiodes
 connector-shrouded
 
 
 0
 10
 10
-footprints
+nodiodes
 diode
 
 
 0
 2
 2
-footprints
+nodiodes
 hole-four
 
 
 0
 4
 0
-footprints
+nodiodes
 hole-three
 
 
 0
 3
 0
-footprints
+nodiodes
 hole-two
 
 
 0
 2
 0
-footprints
+nodiodes
 mokou-520
 
 
 0
 0
 0
-footprints
+nodiodes
 mokou-boomer
 
 
 0
 0
 0
-footprints
+nodiodes
 mokou-cute
 
 
 0
 0
 0
-footprints
+nodiodes
 mokou-drugs
 
 
 0
 0
 0
-footprints
+nodiodes
 mokou-ketamine
 
 
 0
 0
 0
-footprints
+nodiodes
 mokou-moon
 
 
 0
 0
 0
-footprints
+nodiodes
 mokou-sleep
 
 
 0
 0
 0
-footprints
+nodiodes
 promicro
 
 
 0
 24
 24
-footprints
+nodiodes
 trrs
 
 
