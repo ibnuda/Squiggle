@@ -61,25 +61,38 @@ tightening_hole()
 }
 
 module
-promicro_trrs_space()
+promicro_space()
 {
-    union()
-    {
-        // promicro space.
-        polygon(points = [
-            [ 116, -5 ],
-            [ 136, -5 ],
-            [ 136, -56 ],
-            [ 116, -56 ],
-        ]);
-        // trrs jack space.
-        polygon(points = [
-            [ 155, -75 ],
-            [ 155, -59 ],
-            [ 122, -59 ],
-            [ 122, -75 ],
-        ]);
-    }
+    // promicro space.
+    polygon(points = [
+        [ 116, -5 ],
+        [ 136, -5 ],
+        [ 136, -56 ],
+        [ 116, -56 ],
+    ]);
+}
+
+module
+trrs_space()
+{
+    polygon(points = [
+        [ 155, -75 ],
+        [ 155, -59 ],
+        [ 122, -59 ],
+        [ 122, -75 ],
+    ]);
+
+}
+
+module
+idc_space()
+{
+    polygon(points = [
+        [ 122, -59 ],
+        [ 133, -59 ],
+        [ 133, -81 ],
+        [ 122, -81 ],
+    ]);
 }
 
 module alpha_holes(width = 14)
