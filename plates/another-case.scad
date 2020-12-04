@@ -3,7 +3,7 @@ include <common.scad>;
 $fn = 60;
 
 bottom_thickness = 3;
-middle_thickness = 7;
+middle_thickness = 8;
 switch_thickness = 3;
 top_thickness = 7;
 
@@ -11,7 +11,7 @@ use_tenting_screws = true;
 
 is_36 = false;
 
-is_case = false;
+is_case = true;
 
 is_goldberg = false;
 
@@ -50,7 +50,8 @@ middle_plate()
     {
         bottom_plate();
         shape_of_pcb();
-        promicro_trrs_space();
+        // promicro_trrs_space();
+        white_space();
     }
 }
 
@@ -81,11 +82,11 @@ if (is_case) {
     }
     translate([ 150, 0, bottom_thickness ]) color([ 0.2, 0.3, 0.2 ])
     {
-        // linear_extrude(height = middle_thickness) { middle_plate(); }
+        linear_extrude(height = middle_thickness) { middle_plate(); }
     }
     translate([ 0, 0, 0 ]) color([ 0.3, 0.3, 0.3 ])
     {
-        linear_extrude(height = switch_thickness) { upper_plate(14, true); }
+        // linear_extrude(height = switch_thickness) { upper_plate(14, true); }
     }
     if (is_high) {
         difference()
