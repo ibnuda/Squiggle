@@ -1,6 +1,9 @@
 include <common.scad>
 
+// when you don't use 2x2u for the thumbkey.
 is_goldberg = false;
+// when you use the minimalist variant.
+is_minimalist = true;
 
 bottom_plate_thickness = 5;
 pcb_space_thickness = is_goldberg ? 4 : 6;
@@ -9,6 +12,7 @@ switch_plate_thickness = is_goldberg ? 5 : 3;
 bottom_pcb_switch_thickness = bottom_pcb_thickness + switch_plate_thickness;
 
 promicro_trrs_height = 12;
+idc_space_height = 25;
 
 movement = is_goldberg ? 3 : 5;
 
@@ -58,7 +62,12 @@ module case ()
     {
         base_case();
         translate([ 0, 0, bottom_plate_thickness ]) linear_extrude(height = pcb_space_thickness) shape_of_pcb();
-        translate([ 0, 0, bottom_plate_thickness ]) linear_extrude(height = promicro_trrs_height) promicro_trrs_space();
+        translate([ 0, 0, bottom_plate_thickness ]) linear_extrude(height = promicro_trrs_height) promicro_space();
+        if (is_minimalist) {
+            translate([ 0, 0, bottom_plate_thickness ]) linear_extrude(height = idc_space_height) idc_space();
+        } else {
+            translate([ 0, 0, bottom_plate_thickness ]) linear_extrude(height = promicro_trrs_height) trrs_space();
+        }
         translate([ 0, 0, bottom_pcb_thickness ]) linear_extrude(height = 5) alpha_holes(14);
         translate([ 0, 0, bottom_pcb_thickness ]) linear_extrude(height = 5) thumb_hole(96.6, -98.7, 153.4, true, 14, is_goldberg);
         translate([ 0, 0, bottom_pcb_thickness ]) linear_extrude(height = 5) thumb_hole(113.7, -107.3, -26.6, true, 14, is_goldberg);
